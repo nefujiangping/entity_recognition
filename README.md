@@ -44,7 +44,7 @@ Other models can be implemented by adding/modifying few codes.
     + `tag`: `BIOES` ner tag list, one tag per line (`O` in first line)
 - modify `config.py`
 - run `python main.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer`
-- train token-level EMLo, get contextualized sentence representation for train/dev/test data (see [Sec.]()), then run `python bilstm_pointer_elmo.py` 
+- train token-level EMLo, get contextualized sentence representation for train/dev/test data (see [Sec.](https://github.com/nefujiangping/entity_recognition#how-to-train-a-pure-token-level-elmo-from-scratch)), then run `python bilstm_pointer_elmo.py` 
 
 
 ## How to train a pure <u>token-level</u> ELMo from scratch?
