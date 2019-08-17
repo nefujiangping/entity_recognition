@@ -4,7 +4,7 @@ Some **Entity Recognition** models for [2019 Datagrand Cup: Text Information Ext
 
 ## Requirements
 - python 3.6
-- [keras](https://github.com/keras-team/keras) 2.2.4
+- [keras](https://github.com/keras-team/keras) 2.2.4 (tensorflow backend)
 - [keras-contrib](https://github.com/keras-team/keras-contrib) 2.0.8 for CRF inference.
 - [gensim](https://pypi.org/project/gensim/) for training word2vec.
 - [bilm-tf](https://github.com/allenai/bilm-tf) for EMLo.
@@ -43,8 +43,9 @@ Other models can be implemented by adding/modifying few codes.
     + `vocab`: word vocabulary, one word per line, with `word word_count` format
     + `tag`: `BIOES` ner tag list, one tag per line (`O` in first line)
 - modify `config.py`
-- run `python main.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer`
-- train token-level EMLo, get contextualized sentence representation for train/dev/test data (see [Sec.](https://github.com/nefujiangping/entity_recognition#how-to-train-a-pure-token-level-elmo-from-scratch)), then run `python bilstm_pointer_elmo.py` 
+- run `python main.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
+- follow the instruction described [here](ELMo/README.md) to get contextualized sentence representation for `train_full/dev/test` data from pre-trained ELMo weights
+- run `python bilstm_pointer_elmo.py` 
 
 
 ## How to train a pure <u>token-level</u> ELMo from scratch?

@@ -16,12 +16,9 @@ elmo_dim = 512
 
 # Contextualized sentence embedding of ELMo.
 # Please refer to Sec. `How to train a pure token-level ELMo from scratch` of `README.md`
-# train_elmo_path = 'daguan_data_elmo_embedd/train_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
-# dev_elmo_path = 'daguan_data_elmo_embedd/dev_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
-# test_elmo_path = 'daguan_data_elmo_embedd/test_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
-train_elmo_path = '/home2/public/jp/daguan_data_elmo_embedd/train_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
-dev_elmo_path = '/home2/public/jp/daguan_data_elmo_embedd/dev_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
-test_elmo_path = '/home2/public/jp/daguan_data_elmo_embedd/test_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
+train_elmo_path = 'ELMo_data/train_full_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
+dev_elmo_path = 'ELMo_data/dev_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
+test_elmo_path = 'ELMo_data/test_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
 
 # data for train/dev/test
 train_path = 'data/train%s.json' % ('_full' if 'full' in model_name else '')
