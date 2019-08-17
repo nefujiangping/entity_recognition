@@ -17,6 +17,7 @@ vocab_file = os.path.join(datadir, 'elmo_vocab')
 options_file = os.path.join(datadir, 'options.json')
 weight_file = os.path.join(datadir, 'daguan_15epoch_2048dim_256projection_dim_no_charcnn.hdf5')
 inp_embedding_weight_file = os.path.join(datadir, 'embedding_weight_file')
+ELMo_data = 'ELMo_data'
 
 
 def extract_embedding_weight_file(weight_file, embedd_out_file):
@@ -99,10 +100,9 @@ def dump_bilm_embeddings(vocab_file, options_file,
         for _count, split in zip([1500, 15500, 3000], ['dev', 'train_full', 'test']):
             # split = 'dev'  # dev/train_full/test
             dataset_file = 'data/%s.json' % split
-            out_elmo_datadir = 'ELMo_data'
-            output_file_last = os.path.join(out_elmo_datadir, '%s_elmo_embeddings_last.hdf5' % split)
-            output_file_avg = os.path.join(out_elmo_datadir, '%s_elmo_embeddings_avg.hdf5' % split)
-            output_file_avg_of_last_two = os.path.join(out_elmo_datadir, '%s_elmo_embeddings_avg_of_last_two.hdf5' % split)
+            output_file_last = os.path.join(ELMo_data, '%s_elmo_embeddings_last.hdf5' % split)
+            output_file_avg = os.path.join(ELMo_data, '%s_elmo_embeddings_avg.hdf5' % split)
+            output_file_avg_of_last_two = os.path.join(ELMo_data, '%s_elmo_embeddings_avg_of_last_two.hdf5' % split)
             EXAMPLE_COUNT = _count
             print('start to dump %s split...' % split)
             start = time.time()
@@ -117,6 +117,8 @@ def dump_bilm_embeddings(vocab_file, options_file,
 # get `embedding_weight_file`
 extract_embedding_weight_file(weight_file, inp_embedding_weight_file)
 
+if not os.path.exists(ELMo_data):
+    os.mkdir(ELMo_data)
 dump_bilm_embeddings(vocab_file, options_file,
                      weight_file, inp_embedding_weight_file)
 
