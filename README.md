@@ -7,12 +7,12 @@ Some **Entity Recognition** models for [2019 Datagrand Cup: Text Information Ext
 - [keras](https://github.com/keras-team/keras) 2.2.4 (tensorflow backend)
 - [keras-contrib](https://github.com/keras-team/keras-contrib) 2.0.8 for CRF inference.
 - [gensim](https://pypi.org/project/gensim/) for training word2vec.
-- [bilm-tf](https://github.com/allenai/bilm-tf) for EMLo.
+- [bilm-tf](https://github.com/allenai/bilm-tf) for ELMo.
 
 ## Components of Entity Recognition
 
 ### Word Embedding
-- Static Word Embedding: word2vec, GloVE
+- Static Word Embedding: word2vec, GloVe
 - Contextualized Word Representation: [ELMo](https://github.com/allenai/bilm-tf) (`_elmo`), refer to [Sec.](https://github.com/nefujiangping/entity_recognition#how-to-train-a-pure-token-level-elmo-from-scratch)
 
 ### Sentence Representation
@@ -20,7 +20,7 @@ Some **Entity Recognition** models for [2019 Datagrand Cup: Text Information Ext
 - [DGCNN](https://kexue.fm/archives/5409)
 
 ### Inference
-- sequence labeling
+- sequence labeling (`sequence_labeling.py`)
     + CRF
     + softmax
 - predict start/end index of entities (`_pointer`)
@@ -29,7 +29,7 @@ Some **Entity Recognition** models for [2019 Datagrand Cup: Text Information Ext
 According to the three components described above, there actually exists 12 models in all.
 However, this repo only implemented the following 6 models:
 
-- Static Word Embedding × (BiLSTM, DGCNN) × (CRF, softmax): `main.py`
+- Static Word Embedding × (BiLSTM, DGCNN) × (CRF, softmax): `sequence_labeling.py`
 - (Static Word Embedding, ELMo) × BiLSTM × pointer: `bilstm_pointer.py` and `bilstm_pointer_elmo.py`
 
 Other models can be implemented by adding/modifying few codes.
@@ -37,15 +37,15 @@ Other models can be implemented by adding/modifying few codes.
 ## How to run
 
 - 1. download official competition data to `data` folder
-- 2. get sequence tagging train/dev/test data: `bin/trans_data.py`
-- 3. train word2vec: `bin/train_w2v.py`
-- 4. prepare `vocab`, `tag`
+- 1. get sequence tagging train/dev/test data: `bin/trans_data.py`
+- 1. train word2vec: `bin/train_w2v.py`
+- 1. prepare `vocab`, `tag`
     + `vocab`: word vocabulary, one word per line, with `word word_count` format
     + `tag`: `BIOES` ner tag list, one tag per line (`O` in first line)
-- 5. modify `config.py`
-- 6. run `python main.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
-- 7. follow the instruction described [here](ELMo/README.md) to get contextualized sentence representation for `train_full/dev/test` data from pre-trained ELMo weights
-- 8. run `python bilstm_pointer_elmo.py` 
+- 1. modify `config.py`
+- 1. run `python sequence_labeling.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
+- 1. follow the instruction described [here](ELMo/README.md) to get contextualized sentence representation for `train_full/dev/test` data from pre-trained ELMo weights
+- 1. run `python bilstm_pointer_elmo.py` 
 
 
 ## How to train a pure <u>token-level</u> ELMo from scratch?
