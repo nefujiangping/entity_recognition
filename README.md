@@ -64,6 +64,7 @@ you can refer to the script [dump_token_level_bilm_embeddings.py](bin/dump_token
 ## References
 - Blog:[《基于CNN的阅读理解式问答模型：DGCNN 》](https://kexue.fm/archives/5409)
 - Blog:[《基于DGCNN和概率图的轻量级信息抽取模型 》](https://kexue.fm/archives/6671)
+- Named entity recognition tutorial: [Named entity recognition series](https://www.depends-on-the-definition.com/introduction-named-entity-recognition-python/)
 - Some [codes](https://github.com/bojone/)
 - Sequence Evaluation tools: [seqeval](https://github.com/chakki-works/seqeval)
 - Neural Sequence Labeling Toolkit: [NCRF++](https://github.com/jiesutd/NCRFpp)
