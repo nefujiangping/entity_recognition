@@ -36,16 +36,16 @@ Other models can be implemented by adding/modifying few codes.
 
 ## How to run
 
-- 1. download official competition data to `data` folder
-- 1. get sequence tagging train/dev/test data: `bin/trans_data.py`
-- 1. train word2vec: `bin/train_w2v.py`
-- 1. prepare `vocab`, `tag`
+1. download official competition data to `data` folder
+1. get sequence tagging train/dev/test data: `bin/trans_data.py`
+1. train word2vec: `bin/train_w2v.py`
+1. prepare `vocab`, `tag`
     + `vocab`: word vocabulary, one word per line, with `word word_count` format
     + `tag`: `BIOES` ner tag list, one tag per line (`O` in first line)
-- 1. modify `config.py`
-- 1. run `python sequence_labeling.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
-- 1. follow the instruction described [here](ELMo/README.md) to get contextualized sentence representation for `train_full/dev/test` data from pre-trained ELMo weights
-- 1. run `python bilstm_pointer_elmo.py` 
+1. modify `config.py`
+1. run `python sequence_labeling.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
+1. follow the instruction described [here](ELMo/README.md) to get contextualized sentence representation for `train_full/dev/test` data from pre-trained ELMo weights
+1. run `python bilstm_pointer_elmo.py` 
 
 
 ## How to train a pure <u>token-level</u> ELMo from scratch?
