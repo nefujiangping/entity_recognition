@@ -9,13 +9,16 @@ DGC12 = False  # Use 6-layer DGC or 12-layer
 start_threshold, end_threshold = 0.5, 0.4  # span start/end index threshold for `_pointer` models.
 
 # elmo
-# `avg/last`, `avg` means use the embedding of the average of three layers of ELMo
-# `last` means use the last layer.
+# `avg/last/avg_of_last_two`,
+# `avg` means using the embedding of the average of three layers of ELMo,
+# `last` means using the last layer,
+# `avg_of_last_two` means using the embedding of the average of last two layers.
 elmo_embedding_mode = 'avg'
 elmo_dim = 512
 
 # Contextualized sentence embedding of ELMo.
 # Please refer to Sec. `How to train a pure token-level ELMo from scratch` of `README.md`
+# or `ELMo/README.md` and `bin/get_elmo_embedding.py` to get elmo embedding for daguan train/dev/test.
 train_elmo_path = 'ELMo_data/train_full_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
 dev_elmo_path = 'ELMo_data/dev_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
 test_elmo_path = 'ELMo_data/test_elmo_embeddings_%s.hdf5' % elmo_embedding_mode
