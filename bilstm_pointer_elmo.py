@@ -178,9 +178,11 @@ class DataGenerator:
                 if len(batch_text_idx) == self.batch_size or i == idxs[-1]:  # reach the batch_size or the end.
                     if self.trainset:  # train mode: padding ner_idx
                         yield [
-                            sequence_padding(batch_text_idx),  # shape(batch_size, batch_max_seq_len) batch text idx
+                            # shape(batch_size, batch_max_seq_len) batch text idx
+                            sequence_padding(batch_text_idx),
+                            # shape(batch_size, batch_max_seq_len, elmo_dim)
                             padding_elmo_embedding(batch_elmo_embedd, elmo_embedd_dim=config.elmo_dim),
-                            # a_start shape(batch_size, batch_max_seq_len)
+                            # shape(batch_size, batch_max_seq_len)
                             sequence_padding([batch[0] for batch in batch_start_end]),  # a_start
                             sequence_padding([batch[1] for batch in batch_start_end]),  # a_end
                             sequence_padding([batch[2] for batch in batch_start_end]),  # b_start
