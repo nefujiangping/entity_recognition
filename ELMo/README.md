@@ -1,5 +1,6 @@
 
 ### Get contextualized sentence representation from pre-trained ELMo model
+- Install ELMo scripts: [bilm-tf#installing](https://github.com/allenai/bilm-tf#installing)
 - First download pre-trained daguan competition ELMo model to this folder from
 
   > 链接：https://pan.baidu.com/s/10eZ0EPyerv982aHiEevEgw 提取码：rp5n
@@ -8,4 +9,4 @@
 
 - Then run `bin/get_elmo_embedding.py`.
 
-- Contextualized sentence representation for `train_full/dev/test.json` will be dumped to `ELMo_data` folder.
+- Contextualized sentence representations for each sentence of `train_full/dev/test.json` will be dumped to `ELMo_data` folder.
