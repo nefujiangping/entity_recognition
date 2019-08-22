@@ -37,17 +37,21 @@ def trans_to_sequence_label_format(in_file, out_file):
 
 
 def construct_train_dev(original_train_file, train_file, dev_file):
+    lines = []
     with open(original_train_file, 'r') as f:
-        lines = []
         for line in f:
             lines.append(line)
         random.shuffle(lines)
-        with open(dev_file, 'w') as dev_f:
-            for line in lines[:1500]:
-                dev_f.write(line)
         with open(train_file, 'w') as train_f:
-            for line in lines[1500:]:
+            for line in lines[:15500]:  # 15500 for train
                 train_f.write(line)
+        with open(dev_file, 'w') as dev_f:
+            for line in lines[15500:]:  # 1500 for dev
+                dev_f.write(line)
+    # reconstruct train_full.json = train.json+dev.json (in order)
+    with open(original_train_file, 'w') as f:
+        for line in lines:
+            f.write(line)
 
 
 def construct_test(in_file):
