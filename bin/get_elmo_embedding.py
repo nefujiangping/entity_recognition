@@ -84,7 +84,7 @@ def dump_bilm_embeddings(vocab_file, options_file,
                         data=avg_lasttwo
                     )
                 sentence_id += 1
-                if sentence_id % 3 == 0:
+                if sentence_id % 500 == 0:
                     print('%.2f%% finished!' % (sentence_id/float(EXAMPLE_COUNT)*100))
         finally:
             fin.close()
@@ -97,7 +97,7 @@ def dump_bilm_embeddings(vocab_file, options_file,
 
     with tf.Session(config=config) as sess:
         sess.run(tf.global_variables_initializer())
-        for _count, split in zip([1500, 15500, 3000], ['dev', 'train_full', 'test']):
+        for _count, split in zip([1500, 17000, 3000], ['dev', 'train_full', 'test']):
             # split = 'dev'  # dev/train_full/test
             dataset_file = 'data/%s.json' % split
             output_file_last = os.path.join(ELMo_data, '%s_elmo_embeddings_last.hdf5' % split)
