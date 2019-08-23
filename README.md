@@ -48,7 +48,7 @@ Other models can be implemented by adding/modifying few codes.
 1. Run model with static word embedding, here take `word2vec` as an example:
     1. train word2vec: `bin/train_w2v.py`
     1. modify `config.py`
-    1. run `python sequence_labeling.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
+    1. run `python sequence_labeling.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer.py` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
 1. Or run model with ELMo embedding (dump contextualized sentence representation for each sentence of `train/dev/test` to file first, then load them for train/dev/test, **not** run ELMo on the fly):
     1. follow the instruction described [here](ELMo/README.md) to get contextualized sentence representation for `train_full/dev/test` data from pre-trained ELMo weights
     1. modify `config.py`
