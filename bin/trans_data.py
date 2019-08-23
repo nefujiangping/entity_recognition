@@ -59,7 +59,7 @@ def construct_test(in_file):
         for line in f:
             toks = line.strip().split('_')
             sent_len = len(toks)
-            ner = ' '.join(['O']*sent_len)
+            ner = ['S']*sent_len  # dummy ner tags
             obj = {
                 'text': toks,
                 'ner': ner  # add dummy ner tags
