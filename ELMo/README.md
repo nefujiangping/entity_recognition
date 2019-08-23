@@ -9,4 +9,6 @@
 
 - Then run `bin/get_elmo_embedding.py`.
 
+- Note that this script will produce very large output files (by default, 6.31G in total).
+
 - Contextualized sentence representations for each sentence of `train_full/dev/test.json` will be dumped to `ELMo_data` folder.
