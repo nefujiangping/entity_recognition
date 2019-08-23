@@ -36,20 +36,23 @@ Other models can be implemented by adding/modifying few codes.
 
 ## How to run
 
-- Prepare data:
-1. download official competition data to `data` folder
-1. get sequence tagging train/dev/test data: `bin/trans_data.py`
-1. prepare `vocab`, `tag`
-    + `vocab`: word vocabulary, one word per line, with `word word_count` format
-    + `tag`: `BIOES` ner tag list, one tag per line (`O` in first line)
-- Run model with static word embedding, here take `word2vec` as an example:
-1. train word2vec: `bin/train_w2v.py`
-1. modify `config.py`
-1. run `python sequence_labeling.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
-- Or run model with ELMo embedding (dump contextualized sentence representation for each sentence of `train/dev/test` to file first, then load them for train/dev/test, **not** run ELMo on the fly):
-1. follow the instruction described [here](ELMo/README.md) to get contextualized sentence representation for `train_full/dev/test` data from pre-trained ELMo weights
-1. modify `config.py`
-1. run `python bilstm_pointer_elmo.py` 
+1. Prepare data:
+    1. download official competition data to `data` folder
+    1. get sequence tagging train/dev/test data: `bin/trans_data.py`
+    1. prepare `vocab`, `tag`
+        + `vocab`: word vocabulary, one word per line, with `word word_count` format
+        + `tag`: `BIOES` ner tag list, one tag per line (`O` in first line)
+    1. follow the step 2 or 3 below
+        + 2 is for models using static word embedding
+        + 3 is for model using ELMo
+1. Run model with static word embedding, here take `word2vec` as an example:
+    1. train word2vec: `bin/train_w2v.py`
+    1. modify `config.py`
+    1. run `python sequence_labeling.py [bilstm/dgcnn] [softmax/crf]` or `python bilstm_pointer` (remember to modify `config.model_name` before a new run, or the old model will be overrided)
+1. Or run model with ELMo embedding (dump contextualized sentence representation for each sentence of `train/dev/test` to file first, then load them for train/dev/test, **not** run ELMo on the fly):
+    1. follow the instruction described [here](ELMo/README.md) to get contextualized sentence representation for `train_full/dev/test` data from pre-trained ELMo weights
+    1. modify `config.py`
+    1. run `python bilstm_pointer_elmo.py` 
 
 
 ## How to train a pure <u>token-level</u> ELMo from scratch?
